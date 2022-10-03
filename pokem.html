@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+	<title>Pokemon</title>
+</head>
+
+<body>
+	<div class="container-fluid mt-5">
+
+		<div class="row">
+			<div class="col-lg-6 col-12">
+				<h6>Search by</h6>
+				<input class="form-control search-box me-2 light-blue" type="text" placeholder="Name or Number">
+			</div>
+			<div class="col-lg-2 col-6">
+				<h6>Type</h6>
+				<div class="type-selection light-blue" data-bs-toggle="collapse" data-bs-target="#type">Select
+					Type</div>
+				<div id="type" class="select-type-box collapse"></div>
+			</div>
+			<div class="col-lg-2 col-6">
+				<h6>Gender</h6>
+				<div class="type-selection light-blue" data-bs-toggle="collapse" data-bs-target="#gender">Select
+					Gender</div>
+				<div id="gender" class="select-type-box collapse">
+					<div class="form-check">
+						<input onchange="handleGenderSelection();" type="checkbox" class="form-check-input" id="male"
+							name="male" value="male">
+						<label class="form-check-label" for="male">Male</label>
+					</div>
+					<div class="form-check">
+						<input onchange="handleGenderSelection();" type="checkbox" class="form-check-input" id="female"
+							name="female" value="female">
+						<label class="form-check-label" for="female">Female</label>
+					</div>
+					<div class="form-check">
+						<input onchange="handleGenderSelection();" type="checkbox" class="form-check-input"
+							id="genderless" name="genderless" value="genderless">
+						<label class="form-check-label" for="genderless">Genderless</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-2 col-4 d-none d-md-block">
+				<h6>Stats</h6>
+				<div class="type-selection light-blue" data-bs-toggle="collapse" data-bs-target="#stats">Select
+					Stats</div>
+
+			</div>
+		</div>
+
+	</div>
+	<!--  showing data -->
+	<div class="container-fluid mt-5">
+		<div id="pokemons" class="row" >
+			<!-- ko foreach: pokemons-->
+			<div class="col-md-2 col-6" data-bind="event: { click: $parent.handleCheckPokemonInfo.bind($parent, $data, $index())}">
+				<figure data-bind="class:'text-center pokemon-' + $index()" data-bs-toggle="modal" data-bs-target="#myModal">
+			   <img data-bind="attr: { src: $data.primaryImg}" />
+			<figcaption>
+			<p class="name" data-bind="text: displayName"> </p>
+			<p class="number" data-bind=" text: rank"></p>
+			</figcaption>
+			</figure>
+			</div>
+			<!--/ko-->
+		</div>
+	</div>
+
+
+
+	<!-- The Modal -->
+	<div class="modal" id="myModal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<!-- Modal body -->
+				<!--ko if: selectedPokemon-->
+				<div class="modal-body" data-bind="with: $data.selectedPokemon">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-4">
+								
+								<img data-bind="attr: {src : $data.primaryImg}" alt="img" class="img-fluid">
+							</div>
+							<div class="col-lg-8">
+								<div class="row">
+									<div class="col-lg-4">
+										<p data-bind="text:displayName"></p>
+
+									</div>
+									<div class="col-lg-4">
+										<span data-bind="text: rank"></span>
+									</div>
+									<div class="col-lg-4">
+										<div class="d-flex">
+										<span  class="link" data-bind="event:{click: $parent.handlePreviousSelection.bind($parent)}">Prev</span>
+										<span type="button" class="btn-close" data-bs-dismiss="modal"></span>
+										<span class="link" data-bind="event:{click: $parent.handleNextSelection.bind($parent)}">Next</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+										Excepturi molestias nisi magnam,
+										nostrum molestiae, delectus consequatur necessitatibus blanditiis animi in
+										debitis dolorum ut! Quibusdam, aperiam ab rerum numquam excepturi incidunt.
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row mt-5">
+							<div class="col-lg-3">
+								<h5>Height</h5>
+								<p data-bind="text:info.height"></p>
+								
+							</div>
+							<div class="col-lg-3">
+								<h5>Weight</h5>
+								<p data-bind="text:info.weight + ' kg'"></p>
+							</div>
+							<div class="col-lg-3">Gender(s)</div>
+							<div class="col-lg-3">Egg Groups</div>
+						</div>
+					
+
+						<div class="row mt-5">
+							<div class="col-lg-12">
+								<h5>Evolution Chain</h5>
+							</div>
+						</div>
+						<div class="row mt-5">
+							<div class="col-lg-4">
+								<figure class="text-center">
+									<img src="dream-world.svg" class="img-fluid" />
+									<figcaption>
+										<p class="name">Charmander </p>
+										<p class="number">004</p>
+									</figcaption>
+								</figure>
+							</div>
+							<div class="col-lg-4">
+								<figure class="text-center">
+									<img src="dream-world.svg" class="img-fluid" />
+									<figcaption>
+										<p class="name">Charmeleon </p>
+										<p class="number">005</p>
+									</figcaption>
+								</figure>
+							</div>
+							<div class="col-lg-4">
+								<figure class="text-center">
+									<img src="dream-world.svg" class="img-fluid" />
+									<figcaption>
+										<p class="name">Charizard</p>
+										<p class="number">006</p>
+									</figcaption>
+								</figure>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!--/ko-->
+			</div>
+		</div>
+	</div>
+
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>

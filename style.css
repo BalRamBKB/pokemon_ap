@@ -1,0 +1,120 @@
+html {
+  height: 100%;
+}
+body {
+    background: #DDEDED;
+  font-family: sans-serif;
+}
+
+figure {
+  background: pink;
+  border: 1px dashed #000;
+  border-radius: 6px;
+  height: 300px;
+  padding: 15px;
+  width: 90%
+}
+
+#pokemons figure img {
+  max-width: 120px;
+  width: 100%;
+}
+
+#pokemons figure figcaption p {
+  margin: 0;
+}
+#pokemons figure figcaption .name {
+  color: #2E3155;
+  font-size: 20px;
+  margin-top: 25px;
+  text-transform: capitalize;
+}
+
+#pokemons figure figcaption .number {
+  color: #2D3056
+}
+
+.search-box {
+  height: 54px;
+}
+
+.select-type-box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 5px;
+  position: absolute;
+  max-width: 170px;
+  width: 100%;
+}
+
+.type-selection {
+  border-radius: 8px;
+  padding: 15px;
+  position: relative;
+  max-width: 170px;
+  width: 100%;
+}
+.type-selection::after {
+  content: '\2304';
+  position: absolute;
+  color: #000;
+  top: 6px;
+  right: 15px;
+  font-size: 20px;
+}
+.light-blue {
+  background: #C8DDE2;
+}
+div.type-selection[aria-expanded="true"]{
+  background-color: #fff;
+}
+.select-type-box  .form-check-input:checked {
+  background-color: #2E3155;
+  border-color: #2E3155;
+}
+.select-type-box  .form-check .form-check-label {
+ text-transform: capitalize;
+}
+
+
+.pokemon-1,.pokemon-2,.pokemon-3 {
+  background: linear-gradient(#C0D2CA, #CBBCE5);
+}
+.pokemon-4, .pokemon-5 {
+  background: linear-gradient(#EBC2C4, #EDC1C4);
+}
+
+.pokemon-6 {
+  background: linear-gradient( #E9C2C5, #B5D0E7);
+}
+.pokemon-7,.pokemon-8, .pokemon-9 {
+  background: linear-gradient(#CBD4ED, #CBD5EC);
+}
+.pokemon-10, .pokemon-11 {
+  background: linear-gradient( #C1E0C7, #C1E0C8);
+}
+.pokemon-12 {
+  background: linear-gradient(#C0DFC9, #B4D4E4);
+}
+.pokemon-13, .pokemon-14, .pokemon-15 {
+  background: linear-gradient(#C4D4D2, #CDB9E7);
+}
+.pokemon-16, .pokemon-17 {
+  background: linear-gradient(#B5D2E6, #CECDD8);
+}
+.pokemon-18, .pokemon-19, .pokemon-20 {
+  background: linear-gradient(#DDCAD0, #DECAD0);
+}
+
+.stats .progress {
+  background: #93B2B2;
+}
+.stats .progress .progress-bar {
+  background: #2E3256;
+}
+
+.modal .modal-dialog img {
+  border: 1px dashed #ddd;
+  padding: 15px;
+}
